@@ -230,45 +230,44 @@ void pesquisa(){ //função de pesquisar
 	printf("\n 1- Para pesquisar por email\n 2- Para pesquisar por CPF\n 3- Menu \n");
 	printf("\n\t\tInsira a opção: ");
 	scanf("%s", &resposta);
-			switch(resposta){
-				case '1':	system("cls");
-						printf("\nDigite E-mail: "); 
-						scanf("%s", &emailPesquisa); 
-						for(i=0;i<200;i++){	//o email que o usuario inserir é comparado com os 200 espaços para email no sistema
-							if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela a pessoa com o email igual ao inserido
-								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
-								return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
-							}else{
-								printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-								return pesquisa(); //caso não encontre nada igual, ele retorna para o menu de pesquisa
-						}
-					}
-				
-				case '2':	system("cls");
-						printf("\nDigite o CPF: ");
-						scanf("%s", &cpfPesquisa);
-						for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
-							if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela a pessoa com o cpf igual ao inserido
-								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
-								return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
-							}else{
-								system("cls");
-								printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-								return pesquisa();	//caso não encontre nada igual, ele retorna para o menu de pesquisa
-						}
-						}
-					case '3':	if(j==2){ //caso j estiver valendo 2, retornará para o menu de funcionario
-								system("cls");
-								printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
-								return menufun();
-							}else if(j==3){ //caso j estiver valendo 3, retornará para o menu de administrador
-								system("cls");
-								printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
-								return menu();
-								}
-					default:	system("cls"); 
-							printf(ANSI_COLOR_RED"\nOpção inválida, retornando para o menu de pesquisa... \n"ANSI_COLOR_RESET);
-							return pesquisa();	//caso inserir algo diferente cairá de novo no menu de pesquisa
+	switch(resposta){
+	case '1':	system("cls");
+			printf("\nDigite E-mail: "); 
+			scanf("%s", &emailPesquisa); 
+			for(i=0;i<200;i++){	//o email que o usuario inserir é comparado com os 200 espaços para email no sistema
+				if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela a pessoa com o email igual ao inserido
+					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
+				}else{
+					printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+					return pesquisa(); //caso não encontre nada igual, ele retorna para o menu de pesquisa
+				}
+			}	
+	case '2':	system("cls");
+			printf("\nDigite o CPF: ");
+			scanf("%s", &cpfPesquisa);
+			for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
+				if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela a pessoa com o cpf igual ao inserido
+					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
+					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
+				}else{
+					system("cls");
+					printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+					return pesquisa();	//caso não encontre nada igual, ele retorna para o menu de pesquisa
+				}
+			}
+	case '3':	if(j==2){ //caso j estiver valendo 2, retornará para o menu de funcionario
+				system("cls");
+				printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
+				return menufun();
+			}else if(j==3){ //caso j estiver valendo 3, retornará para o menu de administrador
+				system("cls");
+				printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
+				return menu();
+			}
+				default:	system("cls"); 
+						printf(ANSI_COLOR_RED"\nOpção inválida, retornando para o menu de pesquisa... \n"ANSI_COLOR_RESET);
+						return pesquisa();	//caso inserir algo diferente cairá de novo no menu de pesquisa
 			}
 }
 void exibir(){
