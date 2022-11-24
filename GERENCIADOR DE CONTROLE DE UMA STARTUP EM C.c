@@ -233,7 +233,7 @@ void pesquisa(){ //função de pesquisar
 			printf("\nDigite E-mail: "); 
 			scanf("%s", &emailPesquisa); 
 			for(i=0;i<200;i++){	//o email que o usuário inserir é comparado com os 200 espaços para email no sistema
-				if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuário, sera impresso na tela a pessoa com o email igual ao inserido
+				if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuário, será impresso na tela a pessoa com o email igual ao inserido
 					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
 				}else{
@@ -245,7 +245,7 @@ void pesquisa(){ //função de pesquisar
 			printf("\nDigite o CPF: ");
 			scanf("%s", &cpfPesquisa);
 			for(i=0;i<200;i++){ //o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-				if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuário, sera impresso na tela a pessoa com o cpf igual ao inserido
+				if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuário, será impresso na tela a pessoa com o cpf igual ao inserido
 					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
 					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
 				}else{
@@ -450,15 +450,15 @@ void excluir(){ //função de excluir
 	printf("Menu de Exclusão\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	printf("1- Exclusão por E-mail\n2- Exclusão por nome\n3- Exclusão por CPF\n4- Menu\n");
 	printf("\nInserir opção: ");
-	scanf("%s", &resposta); //atribui a opção que o usuario escolher para a variavel resposta
+	scanf("%s", &resposta); //atribui a opção que o usuário escolher para a variavel resposta
 	printf("\n");
 	switch(resposta){ 
 		case '1':	system("cls"); //opção de exclusão por email
 				printf("\t\tE-mail da pessoa que será excluida: ");
 				printf("\n\t\tInsira o e-mail: "); 
 				scanf("%s", &emailExcluido); //atribui o email digitado para o campo emailExcluido
-				for(i=0;i<200;i++){ //o email que o usuario inserir é comparado com os 200 espaços para email no sistema
-					if(strcmp(email[i],emailExcluido[i]) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o email igual ao inserido
+				for(i=0;i<200;i++){ //o email que o usuário inserir é comparado com os 200 espaços para email no sistema
+					if(strcmp(email[i],emailExcluido[i]) == 0){ //caso exista um email igual ao inserido pelo usuário, será impresso na tela os dados da pessoa com o email igual ao inserido
 						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
 						scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
@@ -483,8 +483,8 @@ void excluir(){ //função de excluir
 				printf("\t\tNome e sobrenome da pessoa que será excluida");
 				printf("\n\t\tInsira o nome e sobrenome: ");
 				scanf("%s", &nomeExcluido);	//atribui o nome digitado para o campo nomeExcluido
-				for(i=0;i<200;i++){ //o nome que o usuario inserir é comparado com os 200 espaços para nome no sistema
-					if(strcmp(nome[i],nomeExcluido[i]) == 0){ //caso exista um nome igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o nome igual ao inserido
+				for(i=0;i<200;i++){ //o nome que o usuário inserir é comparado com os 200 espaços para nome no sistema
+					if(strcmp(nome[i],nomeExcluido[i]) == 0){ //caso exista um nome igual ao inserido pelo usuário, será impresso na tela os dados da pessoa com o nome igual ao inserido
 						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
 						scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
@@ -511,7 +511,7 @@ void excluir(){ //função de excluir
 				printf("\n\t\tInsira CPF: ");
 				scanf("%s", &cpfExcluido); //atribui o cpf digitado para o campo cpfExcluido
 				for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
-					if(strcmp(cpf[i],cpfExcluido[i]) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o cpf igual ao inserido
+					if(strcmp(cpf[i],cpfExcluido[i]) == 0){ //caso exista um cpf igual ao inserido pelo usuario, será impresso na tela os dados da pessoa com o cpf igual ao inserido
 						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
 						scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
