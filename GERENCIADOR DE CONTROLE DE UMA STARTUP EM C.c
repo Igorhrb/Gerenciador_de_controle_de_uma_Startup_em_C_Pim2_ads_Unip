@@ -18,7 +18,6 @@ char funcao[200][50];
 char resposta; //opção em char dos usuários
 
 int op,opp;//variaveis de opções que o usuário pode escolhe
-
 int j,i; //contadores
 
 int validar(char l1[30],char l2[30]){ //validação de login e senha
