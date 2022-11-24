@@ -15,9 +15,9 @@ char cadastrado[200][50];
 char registro[200][50];
 char funcao[200][50];
 
-char resposta; //opção em char dos usuarios
+char resposta; //opção em char dos usuários
 
-int op,opp;//variaveis de opções que o usuario pode escolhe
+int op,opp;//variaveis de opções que o usuário pode escolhe
 
 int j,i; //contadores
 
@@ -29,7 +29,7 @@ int validar(char l1[30],char l2[30]){ //validação de login e senha
 	char fun[30] = "funcionario"; //Definição de funcionario: possiveis empregados com menores autoridades (exemplo: secretaria responsavel por cadastro no sistema)
 	char sfun[30] = "funci123"; //login e senha do funcionario
 	
-		if((strcmp(log,l1) == 0) && (strcmp(sen,l2) ==0)){ //comparação de parametro do usuario com o login administrador
+		if((strcmp(log,l1) == 0) && (strcmp(sen,l2) ==0)){ //comparação de parametro do usuário com o login administrador
 			printf(ANSI_COLOR_RED"\n\t\tAdministrador do sistema Logado!\n"ANSI_COLOR_RESET);
 			j=3;
 			return menu(); //retorna menu de administrador e j=3
@@ -54,7 +54,7 @@ int main(void){ //função de login
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
 	printf("\n\t\tMenu de opções\n\n\t\t1-Login\n\n\t\t2-Fechar o programa\n\t\t");
 	printf("\n\t\tInsira a opção: ");
-	scanf("%s", &resposta);//captura a resposta do usuario
+	scanf("%s", &resposta);//captura a resposta do usuário
 	system("cls");
 	do{
 		switch(resposta){
@@ -112,7 +112,7 @@ void cadastro(){
 				printf("\n\t\tInsira a opção: ");
 				fflush(stdin);
 				scanf("%s", &resposta);	
-			switch(resposta){ //captura a opção que o usuario escolher e atribui a opção para a variavel resposta
+			switch(resposta){ //captura a opção que o usuário escolher e atribui a opção para a variavel resposta
 		
 			case '1':	strcpy(funcao[linha],emprego1); //adiciona segurança no scanf
 					break;
@@ -138,7 +138,7 @@ void cadastro(){
 		printf("\n\t\tInsira a opção: ");
 		scanf("%d", &op); //captura a opção
 		linha++; //variavel linha recebe +1
-		}while(op==1); //enquanto o usuario inserir 1 ele pode adicionar mais uma pessoa
+		}while(op==1); //enquanto o usuário inserir 1 ele pode adicionar mais uma pessoa
 			if(op!=1){
 				system("cls");
 				if(j==2){
@@ -155,10 +155,9 @@ void menu(){
 	printf("Menu do Administrador\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	printf("\t\t1-Cadastrar pessoa\n\t\t2-Pesquisar pessoa\n\t\t3-Exibir pessoa\n\t\t4-Editar pessoa\n\t\t5-Excluir\n\t\t6-Deslogar\n\t\t7-Inicio\n\t\t8-Relatorios\n");
 	printf("\n\t\tInsira a opção: ");
-   	scanf("%s", &resposta);//captura a opção do usuario
+   	scanf("%s", &resposta);//captura a opção do usuário
    	system("cls");
    	switch(resposta){
-		
 		case '1':	return cadastro(); //executa o menu de cadastro (a tela de cadastro de pessoas)				
 		case '2':	return pesquisa(); //executa a função pesquisa (o menu de pesquisa)		
 		case '3':	return exibir(); //executa a função de exibição de pessoas criadas				
@@ -221,7 +220,7 @@ int totalEx = 0; //inicia valendo 0 excluidos
 void pesquisa(){ //função de pesquisar
 	int idadePesquisa; 
 	char emailPesquisa[50];
-	char cpfPesquisa[50]; //variaveis para guardar a informação que o usuario inserir
+	char cpfPesquisa[50]; //variaveis para guardar a informação que o usuário inserir
 	char nomePesquisa[50];
 	char funcaoPesquisa[50];
 	
@@ -234,8 +233,8 @@ void pesquisa(){ //função de pesquisar
 	case '1':	system("cls");
 			printf("\nDigite E-mail: "); 
 			scanf("%s", &emailPesquisa); 
-			for(i=0;i<200;i++){	//o email que o usuario inserir é comparado com os 200 espaços para email no sistema
-				if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela a pessoa com o email igual ao inserido
+			for(i=0;i<200;i++){	//o email que o usuário inserir é comparado com os 200 espaços para email no sistema
+				if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuário, sera impresso na tela a pessoa com o email igual ao inserido
 					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
 				}else{
@@ -246,8 +245,8 @@ void pesquisa(){ //função de pesquisar
 	case '2':	system("cls");
 			printf("\nDigite o CPF: ");
 			scanf("%s", &cpfPesquisa);
-			for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
-				if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela a pessoa com o cpf igual ao inserido
+			for(i=0;i<200;i++){ //o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
+				if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuário, sera impresso na tela a pessoa com o cpf igual ao inserido
 					printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
 					return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
 				}else{
@@ -308,8 +307,7 @@ void edicao(){
 	char emprego3[20]= "serviços gerais";
 	char emprego4[20]= "gerente";
 	char emprego5[20]= "gerente de marketing";
-	
-	 
+		 
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");
 	printf("Menu de Edição\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	printf("\n\t\tO que deseja alterar\n\t\t1- Nome\n\t\t2- E-mail\n\t\t3- CPF\n\t\t4- Idade\n\t\t5- Função na empresa\n\t\t6- Menu\n ");
@@ -349,7 +347,7 @@ void edicao(){
 						scanf("%s", email[i]);//após ter validado os dados, o email inserido vai substituir o email que foi informado anteriormente
 						system("cls");
 						printf("\nA alteração ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-						return edicao(); //apos alterar, retorna para o menu de edição
+						return edicao(); //após alterar, retorna para o menu de edição
 					}else{
 						printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
 						return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
@@ -439,8 +437,8 @@ void edicao(){
 					}
 	
 		default:	system("cls");
-					printf(ANSI_COLOR_RED"\nOpção invalida, digite novamente \n"ANSI_COLOR_RESET);
-					return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+				printf(ANSI_COLOR_RED"\nOpção invalida, digite novamente \n"ANSI_COLOR_RESET);
+				return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
 		}
 	}while(resposta!='1' && resposta!='2' && resposta!='3' && resposta!='4'&& resposta!='5' && resposta!='6');
 	}
@@ -538,8 +536,8 @@ void excluir(){ //função de excluir
 		case '4':	system("cls"); //opção de limpar a tela e retornar menu do administrador
                   		return menu();
                   
-		default:	system("cls"); //caso seja escolhida uma opção diferente das permitidas, limpa a tela e informa que foi invalida a opção
-                 		printf("Opcao invalida, digite novamente \n");
-                	 	return excluir(); //retorna o mesmo menu apos printar na tela a opção invalida
+		default:	system("cls"); //caso seja escolhida uma opção diferente das permitidas, limpa a tela e informa que foi inválida a opção
+                 		printf("Opção inválida, digite novamente \n");
+                	 	return excluir(); //retorna o mesmo menu apos printar na tela a opção inválida
 		}
 }
