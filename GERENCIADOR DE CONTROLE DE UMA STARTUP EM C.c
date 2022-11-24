@@ -15,58 +15,57 @@ char cadastrado[200][50];
 char registro[200][50];
 char funcao[200][50];
 
+char resposta; //opÃ§Ã£o em char dos usuarios
 
-char resposta; //opção em char dos usuarios
-
-int op,opp;//opções que o usuario escolhe
+int op,opp;//variaveis de opÃ§Ãµes que o usuario pode escolhe
 
 int j,i; //contadores
 
-int validar(char l1[30],char l2[30]){ //validação de login e senha
+int validar(char l1[30],char l2[30]){ //validaÃ§Ã£o de login e senha
 	
-	char log[30] = "admin"; //Denifição de administrador: possiveis gestores da startup
+	char log[30] = "admin"; //DenifiÃ§Ã£o de administrador: possiveis gestores da startup
 	char sen[30] = "admin123"; //login e senha do administrador
 	
-	char fun[30] = "funcionario"; //Definição de funcionario: possiveis empregados com menores autoridades (exemplo: secretaria responsavel por cadastro no sistema)
+	char fun[30] = "funcionario"; //DefiniÃ§Ã£o de funcionario: possiveis empregados com menores autoridades (exemplo: secretaria responsavel por cadastro no sistema)
 	char sfun[30] = "funci123"; //login e senha do funcionario
 	
-		if((strcmp(log,l1) == 0) && (strcmp(sen,l2) ==0)){ //comparação de parametro do usuario com o login administrador
+		if((strcmp(log,l1) == 0) && (strcmp(sen,l2) ==0)){ //comparaÃ§Ã£o de parametro do usuario com o login administrador
 			printf(ANSI_COLOR_RED"\n\t\tAdministrador do sistema Logado!\n"ANSI_COLOR_RESET);
 			j=3;
 			return menu(); //retorna menu de administrador e j=3
 			}
 			
-		if((strcmp(fun,l1) == 0) && (strcmp(sfun,l2) ==0)){ //comparação de parametro do funcionario com o login funcionario
+		if((strcmp(fun,l1) == 0) && (strcmp(sfun,l2) ==0)){ //comparaÃ§Ã£o de parametro do funcionario com o login funcionario
 			printf(ANSI_COLOR_RED"\n\t\tFuncionario Logado!\n"ANSI_COLOR_RESET);
 			j=2;
 			return menufun(); //retorna menu de funcionario e j=2
 		}
 		else {
 			system("cls"); 
-			printf(ANSI_COLOR_RED"\n\t\tSenha incorreta, tente novamente: \n"ANSI_COLOR_RESET); //caso a senha esteja incorreta, retorne para a função main (tela de login)
+			printf(ANSI_COLOR_RED"\n\t\tSenha incorreta, tente novamente: \n"ANSI_COLOR_RESET); //caso a senha esteja incorreta, retorne para a tela de login
 			return main();
 		}
 	}
-int main(void){ //função de login		
+int main(void){ //funÃ§Ã£o de login		
 	setlocale(LC_ALL, "Portuguese");
 	
 	printf("\n\n----------------------------------------------------------------------------------\n\t\t"); 
 	printf("\n\t\tBEM VINDO AO SISTEMA DE GERENCIAMENTO DA FREE-UP\n\n");
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
-	printf("\n\t\tMenu de opções\n\n\t\t1-Login\n\n\t\t2-Fechar o programa\n\t\t");
-	printf("\n\t\tInsira a opção: ");
+	printf("\n\t\tMenu de opÃ§Ãµes\n\n\t\t1-Login\n\n\t\t2-Fechar o programa\n\t\t");
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
 	scanf("%s", &resposta);//captura a resposta do usuario
 	system("cls");
 	do{
 		switch(resposta){
 		case '1':	return inicio();//se a resposta for 1 entao passa para o menu de login
 
-		case '2':	printf("\n\t\tSaindo do programa...\n\t\tObrigado por usar nosso software, até a proxima!\n\n");
-					system("pause"); //se a resposta for 2 entao ele finaliza o programa
-					return 0;
+		case '2':	printf("\n\t\tSaindo do programa...\n\t\tObrigado por usar nosso software, atÃ© a proxima!\n\n");
+				system("pause"); //se a resposta for 2 entao ele finaliza o programa
+				return 0;
 
-		default:	printf(ANSI_COLOR_RED"\n\t\tOpção errada, tente novamente"ANSI_COLOR_RESET);
-					return main(); //se a reposta for diferente de 1 e 2 ele recarrega a função (a mesma tela)
+		default:	printf(ANSI_COLOR_RED"\n\t\tOpÃ§Ã£o errada, tente novamente"ANSI_COLOR_RESET);
+				return main(); //se a reposta for diferente de 1 e 2 ele recarrega a funÃ§Ã£o (a mesma tela)
 	}
 }while(resposta!=1 && resposta!=2); //enquanto a resposta for diferente de  1 e 2 ele recarrega a pergunta
 }
@@ -80,20 +79,20 @@ void inicio(){
 	scanf("%s", &login);
 	printf("\t\tInforme sua senha: "); //captura a senha
 	fflush(stdin);
-	for (i = 0;i<8;i++) { //conta até 8 digitos de senha e transforma em "*"
+	for (i = 0;i<8;i++) { //conta atÃ© 8 digitos de senha e transforma em "*"
 		senha[i] = getch();
 		printf("*");
 		}
 	senha[i] = '\0';
-    printf("\n");
+   	printf("\n");
 	system("cls");
-	return validar(login, senha); //manda os parametros de login e senha para a função de validar
+	return validar(login, senha); //manda os parametros de login e senha para a funÃ§Ã£o de validar
 	}
 void cadastro(){
 	static int linha;
-	char emprego1[20]= "segurança"; 
-	char emprego2[20]= "secretária(o)";
-	char emprego3[20]= "serviços gerais"; //listas de variaveis com os cargos da empresa
+	char emprego1[20]= "seguranÃ§a"; 
+	char emprego2[20]= "secretÃ¡ria(o)";
+	char emprego3[20]= "serviÃ§os gerais"; //lista de variaveis com os cargos da empresa
 	char emprego4[20]= "gerente";
 	char emprego5[20]= "gerente de marketing";
 	do{ //cadastro de pessoa
@@ -107,26 +106,26 @@ void cadastro(){
 		printf("\nDigite o CPF: ");
 		scanf("%s", &cpf[linha]); //atribui o cpf para o campo cpf[i(linha)]
 		printf("\nDigite a idade: ");
-		scanf("%s", &idade[linha]); //atribui o idade para o campo idade[i(linha)]
+		scanf("%s", &idade[linha]); //atribui a idade para o campo idade[i(linha)]
 			do{	//se digitar um numero diferente de 1, 2, 3, 4 ou 5 entra no loop do while
-				printf("\nDigite a opção referente ao emprego \n1- Segurança\n2- Secretária(o)\n3- Serviços Gerais\n4- Gerente\n5- Gerente de marketing\n");
-				printf("\n\t\tInsira a opção: ");
+				printf("\nDigite a opÃ§Ã£o referente ao emprego \n1- SeguranÃ§a\n2- SecretÃ¡ria(o)\n3- ServiÃ§os Gerais\n4- Gerente\n5- Gerente de marketing\n");
+				printf("\n\t\tInsira a opÃ§Ã£o: ");
 				fflush(stdin);
 				scanf("%s", &resposta);	
-			switch(resposta){ //captura a opção que o usuario escolher e atribui a opção para a variavel resposta
+			switch(resposta){ //captura a opÃ§Ã£o que o usuario escolher e atribui a opÃ§Ã£o para a variavel resposta
 		
-			case '1':	strcpy(funcao[linha],emprego1); //adiciona segurança no scanf
+			case '1':	strcpy(funcao[linha],emprego1); //adiciona seguranÃ§a no scanf
 						break;
 			case '2':	strcpy(funcao[linha],emprego2); //adiciona secretaria no scanf
 						break;
-			case '3':	strcpy(funcao[linha],emprego3); //adiciona serviços gerais no scanf
+			case '3':	strcpy(funcao[linha],emprego3); //adiciona serviÃ§os gerais no scanf
 						break;
 			case '4':	strcpy(funcao[linha],emprego4); //adiciona gerente no scanf
 						break;
 			case '5':	strcpy(funcao[linha],emprego5); //adiciona gerente de marketing no scanf
 						break;			
 			default:	system("cls"); 
-						printf("\nOpção invalida, tente novamente!\n");
+					printf("\nOpÃ§Ã£o invalida, tente novamente!\n");
 			}
 	}while(resposta!='1' && resposta!='2' && resposta!='3' && resposta!='4'&& resposta!='5'); 
 	
@@ -136,80 +135,80 @@ void cadastro(){
 		printf("Cadastro realizado com sucesso!\n\n");
 		printf("----------------------------------------------------------------------------------\n\n\t\t");   
 		printf("Digite 1 para continuar, ou qualquer tecla para voltar para o menu: ");
-		printf("\n\t\tInsira a opção: ");
-		scanf("%d", &op); //captura a opção
+		printf("\n\t\tInsira a opÃ§Ã£o: ");
+		scanf("%d", &op); //captura a opÃ§Ã£o
 		linha++; //variavel linha recebe +1
 		}while(op==1); //enquanto o usuario inserir 1 ele pode adicionar mais uma pessoa
 			if(op!=1){
 				system("cls");
-			if(j==2){
-				printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);	
-				return menufun(); //se inserir qualquer numero ele retorna para o menu do funcionario caso ele esteja na conta de funcionario
-			}else if(j==3){
-				printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
-				return menu(); //caso ele nao esteja na conta de funcionario entao ele retorna para o menu de administrador
-			}
+				if(j==2){
+					printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);	
+					return menufun(); //se inserir qualquer numero ele retorna para o menu do funcionario caso ele esteja na conta de funcionario
+				}else if(j==3){
+					printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
+					return menu(); //caso ele nao esteja na conta de funcionario entao ele retorna para o menu de administrador
+				}
 			}
 }
 void menu(){
  	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
 	printf("Menu do Administrador\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	printf("\t\t1-Cadastrar pessoa\n\t\t2-Pesquisar pessoa\n\t\t3-Exibir pessoa\n\t\t4-Editar pessoa\n\t\t5-Excluir\n\t\t6-Deslogar\n\t\t7-Inicio\n\t\t8-Relatorios\n");
-	printf("\n\t\tInsira a opção: ");
-   	scanf("%s", &resposta);//captura a opção do usuario
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
+   	scanf("%s", &resposta);//captura a opÃ§Ã£o do usuario
    	system("cls");
    	switch(resposta){
 		
 		case '1':	return cadastro(); //executa o menu de cadastro (a tela de cadastro de pessoas)				
-		case '2':	return pesquisa(); //executa a função pesquisa (o menu de pesquisa)		
-		case '3':	return exibir(); //executa a função de exibição de pessoas criadas				
-		case '4':	return edicao(); //executa a função de alterar algum dado de alguma pessoa cadastrada				
-		case '5':	return excluir(); //executa a função exclusiva do administrador de excluir e retorna para o menu de exclusão		
-  		case '6':	return inicio(); //executa a função de mostrar o inicio, alem de deslogar do sistema
-        case '7':	return main(); //executa a função de deslogar do sistema
-		case '8':	return relatorio(); //executa a função de menu de relatorios
-        default:	system("cls");
-      				printf(ANSI_COLOR_RED"\nOpção inválida, retornando para o menu... \n"ANSI_COLOR_RESET);	
-        			return menu(); 	//retorna para a propria tela e informa que a opção escolhida foi a incorreta
+		case '2':	return pesquisa(); //executa a funÃ§Ã£o pesquisa (o menu de pesquisa)		
+		case '3':	return exibir(); //executa a funÃ§Ã£o de exibiÃ§Ã£o de pessoas criadas				
+		case '4':	return edicao(); //executa a funÃ§Ã£o de alterar algum dado de alguma pessoa cadastrada				
+		case '5':	return excluir(); //executa a funÃ§Ã£o exclusiva do administrador de excluir e retorna para o menu de exclusÃ£o		
+  		case '6':	return inicio(); //executa a funÃ§Ã£o de mostrar o inicio, alem de deslogar do sistema
+       		case '7':	return main(); //executa a funÃ§Ã£o de deslogar do sistema
+		case '8':	return relatorio(); //executa a funÃ§Ã£o de menu de relatorios
+        	default:	system("cls");
+      				printf(ANSI_COLOR_RED"\nOpÃ§Ã£o invÃ¡lida, retornando para o menu... \n"ANSI_COLOR_RESET);	
+        			return menu(); 	//retorna para a propria tela e informa que a opÃ§Ã£o escolhida foi a incorreta
 	}
 }
 void menufun(){
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
 	printf("Menu do Funcionario\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	printf("\t\t1-Cadastrar pessoa\n\t\t2-Pesquisar pessoa\n\t\t3-Exibir pessoa\n\t\t4-Editar pessoa\n\t\t5-Deslogar\n\t\t6-Inicio");
-	printf("\n\t\tInsira a opção: ");
-	scanf("%s", &resposta);//recebe a opção escolhida pelo funcionario
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
+	scanf("%s", &resposta);//recebe a opÃ§Ã£o escolhida pelo funcionario
 	system("cls");
-	switch(resposta){//função de menu do funcionario
+	switch(resposta){//funÃ§Ã£o de menu do funcionario
 		case '1':	return cadastro();//executa o menu de cadastro (a tela de cadastro de pessoas)
-		case '2':	return pesquisa(); //executa a função pesquisa (o menu de pesquisa)
-		case '3':	return exibir(); //executa a função de exibição de pessoas criadas	
-		case '4':	return edicao(); //executa a função de alterar algum dado de alguma pessoa cadastrada	    
-        case '5':	return inicio(); //executa a função de mostrar o inicio, alem de deslogar do sistema    
-    	case '6':	return main();	//executa a função de deslogar do sistema			    
+		case '2':	return pesquisa(); //executa a funÃ§Ã£o pesquisa (o menu de pesquisa)
+		case '3':	return exibir(); //executa a funÃ§Ã£o de exibiÃ§Ã£o de pessoas criadas	
+		case '4':	return edicao(); //executa a funÃ§Ã£o de alterar algum dado de alguma pessoa cadastrada	    
+        	case '5':	return inicio(); //executa a funÃ§Ã£o de mostrar o inicio, alem de deslogar do sistema    
+    		case '6':	return main();	//executa a funÃ§Ã£o de deslogar do sistema			    
   		default:	system("cls");
-       				printf(ANSI_COLOR_RED"\nOpção inválida, retornando para o menu... \n"ANSI_COLOR_RESET);
-       				return menufun();	//retorna para a propria tela e informa que a opção escolhida foi a incorreta
+       				printf(ANSI_COLOR_RED"\nOpÃ§Ã£o invÃ¡lida, retornando para o menu... \n"ANSI_COLOR_RESET);
+       				return menufun(); //retorna para a propria tela e informa que a opÃ§Ã£o escolhida foi incorreta
 	}
 }
-void relatorio(){
-int totalCa = 0;
-int totalEx = 0;
+void relatorio(){ //funÃ§ao de relatorios de cadastros
+int totalCa = 0; //inicia valendo 0 cadastrados
+int totalEx = 0; //inicia valendo 0 excluidos
 
 	char criado[200] = "1"; //variavel de parametro para comparar com os cadastros criados
 	char excluido[200] = "3"; //variavel de parametro para comparar com os cadastros excluidos
 	
-		for(i=0;i<200;i++){
-		if(strcmp(cadastrado[i],criado)==0){ //se a comparação der certo ("1"="1" retornará 0
+		for(i=0;i<200;i++){ //cria um loop de 200 repetiÃ§Ãµes com a posiÃ§Ã£o i sendo o parametro variavel
+		if(strcmp(cadastrado[i],criado)==0){ //se a comparaÃ§Ã£o der certo ("1"="1" retornarÃ¡ 0, se retornar 0 ele acrescenta 1 para o totalCa e repete o loop
 		totalCa++; //total cadastrado recebe +1
 		
-		}else if(strcmp(cadastrado[i],excluido)==0){ //se a comparação der certo ("0"="0" retornará 0
+		}else if(strcmp(cadastrado[i],excluido)==0){ //se a comparaÃ§Ã£o der certo ("0"="0" retornarÃ¡ 0, se retornar 0 ele acrescenta 1 para o totalEx e repete o loop
 		totalEx++;//total excluido recebe +1
 		
 		}else{
-			printf(ANSI_COLOR_RED"\nTotal de pessoas cadastradas no sistema durante a execução do programa: %d\n"ANSI_COLOR_RESET,totalCa); 
+			printf(ANSI_COLOR_RED"\nTotal de pessoas cadastradas no sistema durante a execuÃ§Ã£o do programa: %d\n"ANSI_COLOR_RESET,totalCa); 
 			//imprime na tela usando totalCa de parametro para exibir o total de pessoas cadastradas em numero
-			printf(ANSI_COLOR_RED"\nTotal de pessoas deletadas do sistema durante a execução do programa: %d\n"ANSI_COLOR_RESET,totalEx); 
+			printf(ANSI_COLOR_RED"\nTotal de pessoas deletadas do sistema durante a execuÃ§Ã£o do programa: %d\n"ANSI_COLOR_RESET,totalEx); 
 			//imprime na tela usando totalCa de parametro para exibir o total de pessoas cadastradas em numero
 			printf("\n\nRetornando para o menu principal...\n\n"); 
 			//depois de mostrar quantas pessoas estao no sistema (cadastradas ou excluidas), ele retorna para o menu de administrador
@@ -219,86 +218,85 @@ int totalEx = 0;
 	}
 
 }
-void pesquisa(){ //função de pesquisar
+void pesquisa(){ //funÃ§Ã£o de pesquisar
 	int idadePesquisa; 
 	char emailPesquisa[50];
-	char cpfPesquisa[50]; //variaveis de guardar o parametro para comparação das variaveis ja existentes na tela de cadastro
+	char cpfPesquisa[50]; //variaveis para guardar a informaÃ§Ã£o que o usuario inserir
 	char nomePesquisa[50];
 	char funcaoPesquisa[50];
 	
-		printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
-		printf("Menu de Pesquisa de pessoas cadastradas\n\n\n----------------------------------------------------------------------------------\n\n\n");
-		printf("\n 1- Para pesquisar por email\n 2- Para pesquisar por CPF\n 3- Menu \n");
-		printf("\n\t\tInsira a opção: ");
-		scanf("%s", &resposta);
-			switch(resposta){// se a resposta for 1, entao abre o case 1
-		case '1':	system("cls");
-					printf("\nDigite E-mail: "); 
-					scanf("%s", &emailPesquisa); 
-					for(i=0;i<200;i++){	//o email que o usuario inserir é comparado com os 200 espaços para email no sistema
-						if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela a pessoa com o email igual ao inserido
-						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
-						return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
-						}else{
-						printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-						return pesquisa(); //caso não encontre nada igual, ele retorna para o menu de pesquisa
+	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
+	printf("Menu de Pesquisa de pessoas cadastradas\n\n\n----------------------------------------------------------------------------------\n\n\n");
+	printf("\n 1- Para pesquisar por email\n 2- Para pesquisar por CPF\n 3- Menu \n");
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
+	scanf("%s", &resposta);
+			switch(resposta){
+				case '1':	system("cls");
+						printf("\nDigite E-mail: "); 
+						scanf("%s", &emailPesquisa); 
+						for(i=0;i<200;i++){	//o email que o usuario inserir Ã© comparado com os 200 espaÃ§os para email no sistema
+							if(strcmp(email[i],emailPesquisa) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela a pessoa com o email igual ao inserido
+								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+								return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opÃ§Ã£o de escolher de novo
+							}else{
+								printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+								return pesquisa(); //caso nÃ£o encontre nada igual, ele retorna para o menu de pesquisa
 						}
 					}
 				
-			case '2':	system("cls");
+				case '2':	system("cls");
 						printf("\nDigite o CPF: ");
 						scanf("%s", &cpfPesquisa);
-						for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
+						for(i=0;i<200;i++){ //o cpf que o usuario inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
 							if(strcmp(cpf[i],cpfPesquisa) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela a pessoa com o cpf igual ao inserido
-							printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
-							return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opção de escolher de novo
+								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]); 
+								return pesquisa(); //e depois de imprimir na tela a busca, ele retorna para o menu de pesquisam e tem a opÃ§Ã£o de escolher de novo
 							}else{
-							system("cls");
-							printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-							return pesquisa();	//caso não encontre nada igual, ele retorna para o menu de pesquisa
+								system("cls");
+								printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+								return pesquisa();	//caso nÃ£o encontre nada igual, ele retorna para o menu de pesquisa
 						}
 						}
-			
-					case '3':	if(j==2){ //caso j estiver valendo 2, retornará para o menu de funcionario
-									system("cls");
-									printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
-									return menufun();
-								}else if(j==3){ //caso j estiver valendo 3, retornará para o menu de administrador
-									system("cls");
-									printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
-									return menu();
+					case '3':	if(j==2){ //caso j estiver valendo 2, retornarÃ¡ para o menu de funcionario
+								system("cls");
+								printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
+								return menufun();
+							}else if(j==3){ //caso j estiver valendo 3, retornarÃ¡ para o menu de administrador
+								system("cls");
+								printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
+								return menu();
 								}
 					default:	system("cls"); 
-								printf(ANSI_COLOR_RED"\nOpção inválida, retornando para o menu de pesquisa... \n"ANSI_COLOR_RESET);
-								return pesquisa();	//caso inserir algo diferente cairá de novo no menu de pesquisa
+							printf(ANSI_COLOR_RED"\nOpÃ§Ã£o invÃ¡lida, retornando para o menu de pesquisa... \n"ANSI_COLOR_RESET);
+							return pesquisa();	//caso inserir algo diferente cairÃ¡ de novo no menu de pesquisa
 			}
 }
 void exibir(){
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
 	printf("Exibindo todas as pessoas cadastradas no sistema\n\n\n----------------------------------------------------------------------------------\n\n\n");
 	char cadastrocmp[200] = "1"; //variavel para comparar
-		for(i=0;i<200;i++){
-			if(strcmp(cadastrado[i],cadastrocmp)==0){ //compara se o cadastro esta valendo 1 (que significa cadastrado)
-				printf(	"Nome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n\n\n----------------------------------------------------------------------------------\n\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+	for(i=0;i<200;i++){
+		if(strcmp(cadastrado[i],cadastrocmp)==0){ //compara se o cadastro esta valendo 1 (que significa cadastrado)
+			printf(	"Nome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n\n\n----------------------------------------------------------------------------------\n\n\n", nome[i], email[i], cpf[i], idade[i],funcao[i]);
 			} //caso encontre algum cadastro que tenha valor 1, printa na tela a pessoa com todos os seus dados
 		}
-		printf("----------------------------------------------------------------------------------\n\n\n\t\t"); 
-		printf("Insira qualquer número para voltar para o menu principal ");
-		printf("\n\t\tInsira a opção: ");
-		scanf("%d", &opp);
-		if(opp!=""){ //se for inserido no scanf qualquer valor, a tela será limpa e retornará o seu menu correspondente à conta logada
-			system("cls");
-			if(j==2){
-				printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
-				return menufun();
-			}else if(j==3){
-				printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);	
-				return menu();
+	printf("----------------------------------------------------------------------------------\n\n\n\t\t"); 
+	printf("Insira qualquer nÃºmero para voltar para o menu principal ");
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
+	scanf("%d", &opp);
+	if(opp!=""){ //se for inserido no scanf qualquer valor, a tela serÃ¡ limpa e retornarÃ¡ o seu menu correspondente Ã  conta logada
+		system("cls");
+		if(j==2){
+			printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
+			return menufun();
+		}else if(j==3){
+			printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);	
+			return menu();
 			}
 			}
 }
 void edicao(){
-	//variaveis do tipo char para armazenar a alteração do nome, email,cpf,idade ou cargo na empresa
+	//variaveis do tipo char para armazenar a alteraÃ§Ã£o do nome, email,cpf,idade ou cargo na empresa
 	char nomeEditar[200][50]; 
 	char emailEditar[200][50];
 	char cpfEditar[200][50];
@@ -306,243 +304,243 @@ void edicao(){
 	char funcaoEditar[200][50];
 	
 	//listas de variaveis com os cargos da empresa
-	char emprego1[20]= "segurança";
-	char emprego2[20]= "secretária(o)";
-	char emprego3[20]= "serviços gerais";
+	char emprego1[20]= "seguranÃ§a";
+	char emprego2[20]= "secretÃ¡ria(o)";
+	char emprego3[20]= "serviÃ§os gerais";
 	char emprego4[20]= "gerente";
 	char emprego5[20]= "gerente de marketing";
 	
 	 
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");
-	printf("Menu de Edição\n\n\n----------------------------------------------------------------------------------\n\n\n");
-	printf("\n\t\tO que deseja alterar\n\t\t1- Nome\n\t\t2- E-mail\n\t\t3- CPF\n\t\t4- Idade\n\t\t5- Função na empresa\n\t\t6- Menu\n ");
-	printf("\n\t\tInsira a opção: ");
+	printf("Menu de EdiÃ§Ã£o\n\n\n----------------------------------------------------------------------------------\n\n\n");
+	printf("\n\t\tO que deseja alterar\n\t\t1- Nome\n\t\t2- E-mail\n\t\t3- CPF\n\t\t4- Idade\n\t\t5- FunÃ§Ã£o na empresa\n\t\t6- Menu\n ");
+	printf("\n\t\tInsira a opÃ§Ã£o: ");
 	scanf("%s", &resposta);
-	do{ //enquanto a resposta for diferente de 1, 2, 3, 4, 5 ou 6 a função menu de edição será chamada novamente
+	do{ //enquanto a resposta for diferente de 1, 2, 3, 4, 5 ou 6 a funÃ§Ã£o menu de ediÃ§Ã£o serÃ¡ chamada novamente
 	switch(resposta){
-		case '1':	printf("\nDigite o CPF da pessoa que deseja alterar\n"); //caso a resposta for 1 pedirá um cpf para ser comparado com um cpf ja existente
-					printf("\nInsira o CPF:");
-					scanf("%s", &cpfEditar);//recebe a infromação e atribui para variavel cpfEditar
-					system("cls");
-					for(i=0;i<200;i++){ //o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-						if(strcmp(cpf[i],cpfEditar) == 0){ //se encontrar um cpf igual, será printado a pessoa referente a posição do cpf comparado
-							system("cls");
-							printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-							printf("----------------------------------------------------------------------------------\n\t\t");   
-							printf("\nQual o nome para alterar: ");
-							scanf("%s", nome[i]); //após ter validado os dados, o nome inserido vai substituir o nome que foi informado anteriormente
-							system("cls");
-							printf("\nA alteração ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-							return edicao(); //printa a pessoa com os dados dela e retorna para o menu de edição
-						}else{
-							printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-							return edicao(); //caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela 
+		case '1':	printf("\nDigite o CPF da pessoa que deseja alterar\n"); //caso a resposta for 1 pedirÃ¡ um cpf para ser comparado com um cpf ja existente
+				printf("\nInsira o CPF:");
+				scanf("%s", &cpfEditar);//recebe a infromaÃ§Ã£o e atribui para variavel cpfEditar
+				system("cls");
+				for(i=0;i<200;i++){ //o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfEditar) == 0){ //se encontrar um cpf igual, serÃ¡ printado a pessoa referente a posiÃ§Ã£o do cpf comparado
+						system("cls");
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						printf("----------------------------------------------------------------------------------\n\t\t");   
+						printf("\nQual o nome para alterar: ");
+						scanf("%s", nome[i]); //apÃ³s ter validado os dados, o nome inserido vai substituir o nome que foi informado anteriormente
+						system("cls");
+						printf("\nA alteraÃ§Ã£o ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						return edicao(); //printa a pessoa com os dados dela e retorna para o menu de ediÃ§Ã£o
+					}else{
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return edicao(); //caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela 
 						}
 					}
 	
-			case '2':	printf("\nDigite o CPF da pessoa que deseja alterar\n");
-						printf("\nInsira o CPF:");
-						scanf("%s", &cpfEditar);
+		case '2':	printf("\nDigite o CPF da pessoa que deseja alterar\n");
+				printf("\nInsira o CPF:");
+				scanf("%s", &cpfEditar);
+				system("cls");
+				for(i=0;i<200;i++){//o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfEditar) == 0){
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						printf("----------------------------------------------------------------------------------\n\t\t");   
+						printf("\nQual o email para alterar: ");
+						scanf("%s", email[i]);//apÃ³s ter validado os dados, o email inserido vai substituir o email que foi informado anteriormente
 						system("cls");
-						for(i=0;i<200;i++){//o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-							if(strcmp(cpf[i],cpfEditar) == 0){
-								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-								printf("----------------------------------------------------------------------------------\n\t\t");   
-								printf("\nQual o email para alterar: ");
-								scanf("%s", email[i]);//após ter validado os dados, o email inserido vai substituir o email que foi informado anteriormente
-								system("cls");
-								printf("\nA alteração ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-								return edicao(); //apos alterar, retorna para o menu de edição
-							}else{
-								printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-								return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+						printf("\nA alteraÃ§Ã£o ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						return edicao(); //apos alterar, retorna para o menu de ediÃ§Ã£o
+					}else{
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 						}
 						}
 		
 		case '3':	printf("digite o CPF da pessoa que deseja alterar\n");
-					printf("\nInsira o CPF:");
-					scanf("%s", cpfEditar);
-					system("cls");
-					for(i=0;i<200;i++){//o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-					if(strcmp(cpf[i],cpfEditar) == 0){//o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+				printf("\nInsira o CPF:");
+				scanf("%s", cpfEditar);
+				system("cls");
+				for(i=0;i<200;i++){//o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfEditar) == 0){//o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s\n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
 						printf("----------------------------------------------------------------------------------\n\t\t"); 		
 						printf("\nQual o email para alterar: ");
-						scanf("%s", cpf[i]); //após ter validado os dados, o cpf inserido vai substituir o cpf que foi informado anteriormente
+						scanf("%s", cpf[i]); //apÃ³s ter validado os dados, o cpf inserido vai substituir o cpf que foi informado anteriormente
 						system("cls");
-						printf("\nA alteração ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-						return edicao(); //após alterar, retorna para o menu de edição
+						printf("\nA alteraÃ§Ã£o ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						return edicao(); //apÃ³s alterar, retorna para o menu de ediÃ§Ã£o
 					}else{
-						printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-						return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 					}
 					}
 		case '4':	printf("\nDigite o CPF da pessoa que deseja alterar\n");
-					printf("\nInsira o CPF:");
-					scanf("%s", &cpfEditar);
-					system("cls");
-					for(i=0;i<200;i++){//o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-					if(strcmp(cpf[i],cpfEditar) == 0){ //função de comparar cpf
+				printf("\nInsira o CPF:");
+				scanf("%s", &cpfEditar);
+				system("cls");
+				for(i=0;i<200;i++){//o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfEditar) == 0){ //funÃ§Ã£o de comparar cpf
 						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \n", nome[i], email[i], cpf[i], idade[i]);
 						printf("----------------------------------------------------------------------------------\n\t\t");   
 						printf("\nQual a idade para alterar: ");
 						scanf("%s", idade[i]); //transforma o que o usuario inserir para idade da pessoa cadastrada
 						system("cls");
-						printf("\nA alteração ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-						return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+						printf("\nA alteraÃ§Ã£o ficou: \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 					}else{
-						printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-						return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 					}
 					}
 		case '5':	printf("\nDigite o CPF da pessoa que deseja alterar\n");
-					printf("\nInsira o CPF:");
-					scanf("%s", &cpfEditar);
-					system("cls");
-					for(i=0;i<200;i++){//o cpf que o usuário inserir é comparado com os 200 espaços para cpf no sistema
-						if(strcmp(cpf[i],cpfEditar) == 0){ //função de comparar cpf
-							printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-							printf("----------------------------------------------------------------------------------\n\t\t"); 
+				printf("\nInsira o CPF:");
+				scanf("%s", &cpfEditar);
+				system("cls");
+				for(i=0;i<200;i++){//o cpf que o usuÃ¡rio inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfEditar) == 0){ //funÃ§Ã£o de comparar cpf
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						printf("----------------------------------------------------------------------------------\n\t\t"); 
 					do{
-						printf("\nDigite a opção referente ao emprego \n1- Segurança\n2- Secretária(o)\n3- Serviços Gerais\n4- Gerente\n5- Gerente de marketing\n");
-						printf("\nInsira a opção: ");
+						printf("\nDigite a opÃ§Ã£o referente ao emprego \n1- SeguranÃ§a\n2- SecretÃ¡ria(o)\n3- ServiÃ§os Gerais\n4- Gerente\n5- Gerente de marketing\n");
+						printf("\nInsira a opÃ§Ã£o: ");
 						fflush(stdin);
-						scanf("%s", &resposta);	 //recebe a resposta do usuario e se aplica em algum dos case e caso nao for igual as opçoes, cairá dentro do default
+						scanf("%s", &resposta);	 //recebe a resposta do usuario e se aplica em algum dos case e caso nao for igual as opÃ§oes, cairÃ¡ dentro do default
 						switch(resposta){
-						case '1':	strcpy(funcao[i],emprego1); //função de inserir emprego 1 para a string de funcao(cargo na empresa)
-									break;
-						case '2':	strcpy(funcao[i],emprego2); //função de inserir emprego 2 para a string de funcao(cargo na empresa)
-									break;
-						case '3':	strcpy(funcao[i],emprego3); //função de inserir emprego 3 para a string de funcao(cargo na empresa)
-									break;
-						case '4':	strcpy(funcao[i],emprego4); //função de inserir emprego 4 para a string de funcao(cargo na empresa)
-									break;
-						case '5':	strcpy(funcao[i],emprego5); //função de inserir emprego 5 para a string de funcao(cargo na empresa)
-									break;
-						default:	system("cls"); //caso a opção inserida nao exista ele retornará a perguntar
-									printf("\nOpção invalida, tente novamente!\n");
+						case '1':	strcpy(funcao[i],emprego1); //funÃ§Ã£o de inserir emprego 1 para a string de funcao(cargo na empresa)
+								break;
+						case '2':	strcpy(funcao[i],emprego2); //funÃ§Ã£o de inserir emprego 2 para a string de funcao(cargo na empresa)
+								break;
+						case '3':	strcpy(funcao[i],emprego3); //funÃ§Ã£o de inserir emprego 3 para a string de funcao(cargo na empresa)
+								break;
+						case '4':	strcpy(funcao[i],emprego4); //funÃ§Ã£o de inserir emprego 4 para a string de funcao(cargo na empresa)
+								break;
+						case '5':	strcpy(funcao[i],emprego5); //funÃ§Ã£o de inserir emprego 5 para a string de funcao(cargo na empresa)
+								break;
+						default:	system("cls"); //caso a opÃ§Ã£o inserida nao exista ele retornarÃ¡ a perguntar
+								printf("\nOpÃ§Ã£o invalida, tente novamente!\n");
 					}
 					}while(resposta!='1' && resposta!='2' && resposta!='3' && resposta!='4'&& resposta!='5');
 						system("cls");
-						printf("\nA alteração ficou \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
-						return edicao();//depois da alteração ser concluida, ela aparecerá na tela e retornará para o menu de função de editar
+						printf("\nA alteraÃ§Ã£o ficou \nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s \n", nome[i], email[i], cpf[i], idade[i], funcao[i]);
+						return edicao();//depois da alteraÃ§Ã£o ser concluida, ela aparecerÃ¡ na tela e retornarÃ¡ para o menu de funÃ§Ã£o de editar
 					}else{
-						printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-						return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 					}
 					}
-		case '6':	if(j==2){ //função de reotrnar ao menu
-						system("cls");
-						printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
-						return menufun();//caso j for igual a 2 ele retorna para o menu de funcionario
-					}else if(j==3){
-						system("cls");
-						printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
-						return menu();//caso j for igual a 3 ele retorna para o menu de administrador
+		case '6':	if(j==2){ //funÃ§Ã£o de reotrnar ao menu
+					system("cls");
+					printf(ANSI_COLOR_RED"Retornando para o menu de Funcionario... \n"ANSI_COLOR_RESET);
+					return menufun();//caso j for igual a 2 ele retorna para o menu de funcionario
+				}else if(j==3){
+					system("cls");
+					printf(ANSI_COLOR_RED"Retornando para o menu de Administrador... \n"ANSI_COLOR_RESET);
+					return menu();//caso j for igual a 3 ele retorna para o menu de administrador
 					}
 	
 		default:	system("cls");
-					printf(ANSI_COLOR_RED"\nOpção invalida, digite novamente \n"ANSI_COLOR_RESET);
-					return edicao();//caso as comparações não encontrem nada no sistema a tela de edição será retornada na tela
+					printf(ANSI_COLOR_RED"\nOpÃ§Ã£o invalida, digite novamente \n"ANSI_COLOR_RESET);
+					return edicao();//caso as comparaÃ§Ãµes nÃ£o encontrem nada no sistema a tela de ediÃ§Ã£o serÃ¡ retornada na tela
 		}
 	}while(resposta!='1' && resposta!='2' && resposta!='3' && resposta!='4'&& resposta!='5' && resposta!='6');
 	}
-void excluir(){ //função de excluir
+void excluir(){ //funÃ§Ã£o de excluir
 	char emailExcluido[200][50];
 	char nomeExcluido[200][50];
 	char cpfExcluido[200][50];
 	
 	printf("----------------------------------------------------------------------------------\n\n\n\t\t");   
-	printf("Menu de Exclusão\n\n\n----------------------------------------------------------------------------------\n\n\n");
-	printf("1- Exclusão por E-mail\n2- Exclusão por nome\n3- Exclusão por CPF\n4- Menu\n");
-	printf("\nInserir opção: ");
-	scanf("%s", &resposta); //atribui a opção que o usuario ecolher para a variavel resposta
+	printf("Menu de ExclusÃ£o\n\n\n----------------------------------------------------------------------------------\n\n\n");
+	printf("1- ExclusÃ£o por E-mail\n2- ExclusÃ£o por nome\n3- ExclusÃ£o por CPF\n4- Menu\n");
+	printf("\nInserir opÃ§Ã£o: ");
+	scanf("%s", &resposta); //atribui a opÃ§Ã£o que o usuario escolher para a variavel resposta
 	printf("\n");
 	switch(resposta){ 
-		case '1':	system("cls"); //opção de exclusão por email
-					printf("\t\tE-mail da pessoa que será excluida: ");
-					printf("\n\t\tInsira o e-mail: "); 
-					scanf("%s", &emailExcluido); //atribui o email digitado para o campo emailExcluido
-					for(i=0;i<200;i++){ //o email que o usuario inserir é comparado com os 200 espaços para email no sistema
-						if(strcmp(email[i],emailExcluido[i]) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o email igual ao inserido
-							printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
-							printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
-							scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
-							if(opp==1){ //caso a escolha seja "sim"
-								strcpy(cadastrado[i], "3");
-								system("cls");
-								printf("\nExcluido com sucesso!\nRetornando para o menu de exclusão\n");
-								return excluir(); //retorna ao menu de exclusão após ter excluido a pessoa com sucesso
-							}else{ //caso a escolha seja "não"
-								system("cls");
-								printf("\nExclusão cancelada, retornando para o menu...\n\n");
-								return excluir(); //retorna ao menu de exclusão após o cancelamento da exclusão
+		case '1':	system("cls"); //opÃ§Ã£o de exclusÃ£o por email
+				printf("\t\tE-mail da pessoa que serÃ¡ excluida: ");
+				printf("\n\t\tInsira o e-mail: "); 
+				scanf("%s", &emailExcluido); //atribui o email digitado para o campo emailExcluido
+				for(i=0;i<200;i++){ //o email que o usuario inserir Ã© comparado com os 200 espaÃ§os para email no sistema
+					if(strcmp(email[i],emailExcluido[i]) == 0){ //caso exista um email igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o email igual ao inserido
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- NÃ£o\n");
+						scanf("%d", &opp); //captura a opÃ§Ã£o escolhida "sim" ou "nÃ£o"
+						if(opp==1){ //caso a escolha seja "sim"
+							strcpy(cadastrado[i], "3");
+							system("cls");
+							printf("\nExcluido com sucesso!\nRetornando para o menu de exclusÃ£o\n");
+							return excluir(); //retorna ao menu de exclusÃ£o apÃ³s ter excluido a pessoa com sucesso
+						}else{ //caso a escolha seja "nÃ£o"
+							system("cls");
+							printf("\nExclusÃ£o cancelada, retornando para o menu...\n\n");
+							return excluir(); //retorna ao menu de exclusÃ£o apÃ³s o cancelamento da exclusÃ£o
 							}
-						}else{ //caso não encontre o email
-							printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-							return excluir();//retorna ao menu de exclusão após não ter encontrado o email
+						}else{ //caso nÃ£o encontre o email
+							printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+							return excluir();//retorna ao menu de exclusÃ£o apÃ³s nÃ£o ter encontrado o email
 						}
 					}
 		
 		
-		case '2': 	system("cls"); //opção de exclusão por nome
-					printf("\t\tNome e sobrenome da pessoa que será excluida");
-					printf("\n\t\tInsira o nome e sobrenome: ");
-					scanf("%s", &nomeExcluido);	//atribui o nome digitado para o campo nomeExcluido
-					for(i=0;i<200;i++){ //o nome que o usuario inserir é comparado com os 200 espaços para nome no sistema
-							if(strcmp(nome[i],nomeExcluido[i]) == 0){ //caso exista um nome igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o nome igual ao inserido
-								printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
-								printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
-								scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
-								if(opp==1){ //caso a escolha seja "sim"
-									printf("\nExcluindo essa pessoa...\n");
-									strcpy(cadastrado[i], "3");
-									system("cls");
-									printf("\nExcluido com sucesso!\nRetornando para o menu de exclusão\n");
-									return excluir(); //retorna ao menu de exclusão após ter excluido a pessoa com sucesso
-								}else{ //caso a escolha seja "não"
+		case '2': 	system("cls"); //opÃ§Ã£o de exclusÃ£o por nome
+				printf("\t\tNome e sobrenome da pessoa que serÃ¡ excluida");
+				printf("\n\t\tInsira o nome e sobrenome: ");
+				scanf("%s", &nomeExcluido);	//atribui o nome digitado para o campo nomeExcluido
+				for(i=0;i<200;i++){ //o nome que o usuario inserir Ã© comparado com os 200 espaÃ§os para nome no sistema
+					if(strcmp(nome[i],nomeExcluido[i]) == 0){ //caso exista um nome igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o nome igual ao inserido
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- NÃ£o\n");
+						scanf("%d", &opp); //captura a opÃ§Ã£o escolhida "sim" ou "nÃ£o"
+						if(opp==1){ //caso a escolha seja "sim"
+							printf("\nExcluindo essa pessoa...\n");
+							strcpy(cadastrado[i], "3");
+							system("cls");
+							printf("\nExcluido com sucesso!\nRetornando para o menu de exclusÃ£o\n");
+							return excluir(); //retorna ao menu de exclusÃ£o apÃ³s ter excluido a pessoa com sucesso
+							}else{ //caso a escolha seja "nÃ£o"
 								system("cls");
-								printf("\nExclusão cancelada\nRetornando para o menu de exclusão...\n");
-								return excluir(); //retorna ao menu de exclusão após o cancelamento da exclusão
+								printf("\nExclusÃ£o cancelada\nRetornando para o menu de exclusÃ£o...\n");
+								return excluir(); //retorna ao menu de exclusÃ£o apÃ³s o cancelamento da exclusÃ£o
 								}
-							}else{ //caso não encontre o nome
-								printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-								return excluir(); //retorna ao menu de exclusão após não ter encontrado o nome
+					}else{ //caso nÃ£o encontre o nome
+						printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+						return excluir(); //retorna ao menu de exclusÃ£o apÃ³s nÃ£o ter encontrado o nome
 							}
 					}
 		
-		case '3':	system("cls"); //opção de exclusão por cpf
-					system("cls");	
-					printf("\t\tCPF da pessoa que será excluida: ");
-					printf("\n\t\tInsira CPF: ");
-					scanf("%s", &cpfExcluido); //atribui o cpf digitado para o campo cpfExcluido
-					for(i=0;i<200;i++){ //o cpf que o usuario inserir é comparado com os 200 espaços para cpf no sistema
-						if(strcmp(cpf[i],cpfExcluido[i]) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o cpf igual ao inserido
-							printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunção: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
-							printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- Não\n");
-							scanf("%d", &opp); //captura a opção escolhida "sim" ou "não"
-							if(opp==1){ //caso a escolha seja "sim", o cadastro da pessoa passa a valer 3 e some do sistema
-								printf("\nExcluindo essa pessoa...\n");
-								strcpy(cadastrado[i], "3");
-								system("cls");
-								printf("\nExcluido com sucesso!\nRetornando para o menu de exclusão\n");
-								return excluir();	
-							}else{ //caso a escolha seja "não"
+		case '3':	system("cls"); //opÃ§Ã£o de exclusÃ£o por cpf
+				system("cls");	
+				printf("\t\tCPF da pessoa que serÃ¡ excluida: ");
+				printf("\n\t\tInsira CPF: ");
+				scanf("%s", &cpfExcluido); //atribui o cpf digitado para o campo cpfExcluido
+				for(i=0;i<200;i++){ //o cpf que o usuario inserir Ã© comparado com os 200 espaÃ§os para cpf no sistema
+					if(strcmp(cpf[i],cpfExcluido[i]) == 0){ //caso exista um cpf igual ao inserido pelo usuario, sera impresso na tela os dados da pessoa com o cpf igual ao inserido
+						printf("\nNome: %s\nEmail: %s\nCPF: %s\nIdade: %s \nFunÃ§Ã£o: %s", nome[i], email[i], cpf[i], idade[i],funcao[i]);
+						printf("\n\nQuer excluir essa pessoa\n1- Sim \n2- NÃ£o\n");
+						scanf("%d", &opp); //captura a opÃ§Ã£o escolhida "sim" ou "nÃ£o"
+						if(opp==1){ //caso a escolha seja "sim", o cadastro da pessoa passa a valer 3 e some do sistema
+							printf("\nExcluindo essa pessoa...\n");
+							strcpy(cadastrado[i], "3");
+							system("cls");
+							printf("\nExcluido com sucesso!\nRetornando para o menu de exclusÃ£o\n");
+							return excluir();	
+							}else{ //caso a escolha seja "nÃ£o"
 								system("cls"); 
-								printf("\nExclusão cancelada\nRetornando para o menu de exclusão...\n");
-								return excluir(); //retorna ao menu de exclusão após o cancelamento da exclusão
+								printf("\nExclusÃ£o cancelada\nRetornando para o menu de exclusÃ£o...\n");
+								return excluir(); //retorna ao menu de exclusÃ£o apÃ³s o cancelamento da exclusÃ£o
 							}
-						}else{ //caso não encontre o cpf
-							printf(ANSI_COLOR_RED"\n\n***************Não encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
-							return excluir(); //retorna ao menu de exclusão após não ter encontrado o cpf
+						}else{ //caso nÃ£o encontre o cpf
+							printf(ANSI_COLOR_RED"\n\n***************NÃ£o encontrado no sistema***************\n\n"ANSI_COLOR_RESET);
+							return excluir(); //retorna ao menu de exclusÃ£o apÃ³s nÃ£o ter encontrado o cpf
 						}
 				}
 				
-		case '4':	system("cls"); //opção de limpar a tela e retornar menu do administrador
-                  	return menu();
+		case '4':	system("cls"); //opÃ§Ã£o de limpar a tela e retornar menu do administrador
+                  		return menu();
                   
-		default:	system("cls"); //caso seja escolhida uma opção diferente das permitidas, limpa a tela e informa que foi invalida a opção
-                 	printf("Opcao invalida, digite novamente \n");
-                	 return excluir(); //retorna o mesmo menu apos printar na tela a opção invalida
+		default:	system("cls"); //caso seja escolhida uma opÃ§Ã£o diferente das permitidas, limpa a tela e informa que foi invalida a opÃ§Ã£o
+                 		printf("Opcao invalida, digite novamente \n");
+                	 	return excluir(); //retorna o mesmo menu apos printar na tela a opÃ§Ã£o invalida
 		}
 }
