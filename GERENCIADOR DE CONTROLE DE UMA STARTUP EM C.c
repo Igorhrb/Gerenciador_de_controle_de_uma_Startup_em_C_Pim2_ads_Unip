@@ -115,15 +115,15 @@ void cadastro(){
 			switch(resposta){ //captura a opção que o usuario escolher e atribui a opção para a variavel resposta
 		
 			case '1':	strcpy(funcao[linha],emprego1); //adiciona segurança no scanf
-						break;
+					break;
 			case '2':	strcpy(funcao[linha],emprego2); //adiciona secretaria no scanf
-						break;
+					break;
 			case '3':	strcpy(funcao[linha],emprego3); //adiciona serviços gerais no scanf
-						break;
+					break;
 			case '4':	strcpy(funcao[linha],emprego4); //adiciona gerente no scanf
-						break;
+					break;
 			case '5':	strcpy(funcao[linha],emprego5); //adiciona gerente de marketing no scanf
-						break;			
+					break;			
 			default:	system("cls"); 
 					printf("\nOpção invalida, tente novamente!\n");
 			}
